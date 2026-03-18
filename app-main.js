@@ -15,11 +15,13 @@ window.showScreen = function(id) {
   var htmlId = SCREEN_MAP[id] || id;
   console.log("[FB] showScreen:", id, "->", htmlId);
   document.querySelectorAll(".screen").forEach(function(el) {
-    el.style.display = "none";
+    el.classList.add("hidden");
     el.classList.remove("on");
+    el.style.display = "";
   });
   var target = document.getElementById(htmlId);
   if (!target) { console.error("[FB] screen not found:", htmlId); return; }
+  target.classList.remove("hidden");
   target.style.display = "flex";
   target.classList.add("on");
   _currentScreen = htmlId;
